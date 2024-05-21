@@ -29,14 +29,28 @@
         required
       /><br />
 
-      <h2>Vista Previa:</h2>
-      <div id="vista-previa-container">
-        <div id="vista-previa">
-          <div id="texto-nombre" class="draggable" draggable="true">
-            Nombre & Apellido
+      <div id="preview-container">
+        <h2>Vista Previa:</h2>
+        <div id="vista-previa-container">
+          <div id="vista-previa">
+            <div id="texto-nombre" class="draggable" draggable="true">
+              Nombre & Apellido
+            </div>
+            <div id="texto-rol" class="draggable" draggable="true">
+              Competidor
+            </div>
           </div>
-          <div id="texto-rol" class="draggable" draggable="true">
-            Competidor
+        </div>
+        <div id="controls">
+          <div class="control">
+            <label for="nombre-size">Tamaño del Nombre:</label>
+            <button id="nombre-increase">+</button>
+            <button id="nombre-decrease">-</button><br />
+          </div>
+          <div class="control">
+            <label for="rol-size">Tamaño del Rol:</label>
+            <button id="rol-increase">+</button>
+            <button id="rol-decrease">-</button><br />
           </div>
         </div>
       </div>
