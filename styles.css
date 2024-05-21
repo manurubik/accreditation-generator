@@ -6,6 +6,11 @@ form {
   margin-bottom: 20px;
 }
 
+#preview-container {
+  display: grid;
+  place-items: center;
+}
+
 #vista-previa-container {
   border: 1px solid black;
   position: relative;
@@ -28,22 +33,30 @@ form {
   background: rgba(255, 255, 255, 0.7);
   border: 1px dashed black;
   cursor: move;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 #texto-nombre {
   top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 2rem;
   width: 80%;
-  text-align: center;
 }
 
 #texto-rol {
   top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 1.5rem;
   width: 70%;
-  text-align: center;
+}
+
+#controls {
+  margin: 1rem;
+  display: flex;
+}
+
+.control {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid black;
 }
