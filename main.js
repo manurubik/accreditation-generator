@@ -205,3 +205,45 @@ const inputs = document.querySelectorAll(
 inputs.forEach((input) => {
   input.addEventListener("change", actualizarVistaPrevia);
 });
+
+// Obtener los elementos de los controles
+const nombreIncreaseBtn = document.getElementById("nombre-increase");
+const nombreDecreaseBtn = document.getElementById("nombre-decrease");
+const rolIncreaseBtn = document.getElementById("rol-increase");
+const rolDecreaseBtn = document.getElementById("rol-decrease");
+
+// Evento click para el botón de aumentar tamaño del nombre
+nombreIncreaseBtn.addEventListener("click", function () {
+  aumentarTamaño("texto-nombre");
+});
+
+// Evento click para el botón de disminuir tamaño del nombre
+nombreDecreaseBtn.addEventListener("click", function () {
+  disminuirTamaño("texto-nombre");
+});
+
+// Evento click para el botón de aumentar tamaño del rol
+rolIncreaseBtn.addEventListener("click", function () {
+  aumentarTamaño("texto-rol");
+});
+
+// Evento click para el botón de disminuir tamaño del rol
+rolDecreaseBtn.addEventListener("click", function () {
+  disminuirTamaño("texto-rol");
+});
+
+// Función para aumentar el tamaño de un elemento
+function aumentarTamaño(idElemento) {
+  const elemento = document.getElementById(idElemento);
+  let fontSize = parseInt(window.getComputedStyle(elemento).fontSize);
+  fontSize += 1; // Aumentar el tamaño en 1px
+  elemento.style.fontSize = `${fontSize}px`;
+}
+
+// Función para disminuir el tamaño de un elemento
+function disminuirTamaño(idElemento) {
+  const elemento = document.getElementById(idElemento);
+  let fontSize = parseInt(window.getComputedStyle(elemento).fontSize);
+  fontSize -= 1; // Disminuir el tamaño en 1px
+  elemento.style.fontSize = `${fontSize}px`;
+}
