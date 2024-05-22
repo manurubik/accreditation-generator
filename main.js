@@ -157,26 +157,75 @@ function actualizarVistaPrevia() {
     };
     fuenteReader.readAsDataURL(fuenteFile);
   }
+  // Obtener el input de patrocinadores
+  const patrocinadoresInput = document.getElementById("patrocinadores");
 
-  // Hacer los elementos draggable con Interact.js
-  // Hacer los elementos draggable con Interact.js
-  interact(".draggable").draggable({
-    // enable inertial throwing
-    inertia: false,
-    // keep the element within the area of it's parent
-    modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: "parent",
-        endOnly: true, // Restringe el movimiento solo cuando se llega al final del contenedor
-      }),
-    ],
-    // enable autoScroll
-    autoScroll: true,
+  // Evento change para el input de patrocinadores
+  patrocinadoresInput.addEventListener("change", function () {
+    // Obtener la lista de archivos seleccionados
+    const files = patrocinadoresInput.files;
 
-    // call this function on every dragmove event
-    onmove: dragMoveListener,
+    // Iterar sobre cada archivo y crear un objeto de imagen draggable para cada uno
+    for (const file of files) {
+      // Crear un objeto de imagen
+      const imagen = new Image();
+      imagen.src = URL.createObjectURL(file);
+      imagen.className = "draggable sponsor";
+      imagen.draggable = true;
+
+      // Añadir la imagen a la vista previa
+      document.getElementById("vista-previa").appendChild(imagen);
+    }
   });
 
+  // Implementa la lógica para hacer las imágenes draggable dentro de la vista previa
+  // Puedes utilizar la misma lógica que implementaste para los elementos de nombre y rol
+
+  // Hacer los elementos draggable con Interact.js
+  interact(".draggable")
+    .draggable({
+      listeners: { move: dragMoveListener },
+      inertia: false,
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: "parent",
+          endOnly: true,
+        }),
+      ],
+    })
+    .resizable({
+      edges: { left: true, right: true, bottom: true, top: true },
+
+      listeners: { move: resizeListener },
+      inertia: false,
+      modifiers: [
+        interact.modifiers.restrictEdges({
+          outer: "parent",
+        }),
+        interact.modifiers.restrictSize({
+          min: { width: 50, height: 50 },
+        }),
+      ],
+    });
+
+  function resizeListener(event) {
+    var target = event.target;
+    var x = parseFloat(target.getAttribute("data-x")) || 0;
+    var y = parseFloat(target.getAttribute("data-y")) || 0;
+
+    // update the element's style
+    target.style.width = event.rect.width + "px";
+    target.style.height = event.rect.height + "px";
+
+    // translate when resizing from top or left edges
+    x += event.deltaRect.left;
+    y += event.deltaRect.top;
+
+    target.style.transform = "translate(" + x + "px," + y + "px)";
+
+    target.setAttribute("data-x", x);
+    target.setAttribute("data-y", y);
+  }
   function dragMoveListener(event) {
     const target = event.target;
     // keep the dragged position in the data-x/data-y attributes

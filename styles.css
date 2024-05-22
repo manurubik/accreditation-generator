@@ -16,7 +16,7 @@ form {
   position: relative;
   width: 300px;
   height: 200px;
-  margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 #vista-previa {
@@ -28,30 +28,32 @@ form {
 }
 
 .draggable {
-  position: absolute;
-  padding: 5px;
-  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px dashed black;
-  cursor: move;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
+  touch-action: none;
+  box-sizing: border-box;
+}
+
+.sponsor {
+  width: 20%;
 }
 
 #texto-nombre {
-  top: 40%;
   font-size: 2rem;
-  width: 80%;
+  width: 90%;
+  height: 50px;
 }
 
 #texto-rol {
-  top: 75%;
   font-size: 1.5rem;
-  width: 70%;
+  width: 50%;
+  height: 50px;
 }
 
 #controls {
-  margin: 1rem;
   display: flex;
 }
 
