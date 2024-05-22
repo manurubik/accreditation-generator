@@ -1,0 +1,63 @@
+#preview-container {
+  display: grid;
+  gap: 10px;
+  place-items: center;
+}
+
+#vista-previa-container {
+  border: 5px solid black;
+  position: relative;
+  width: 300px;
+  height: 200px;
+  padding: 1rem;
+  display: flex;
+}
+
+#vista-previa {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid gray;
+}
+
+.draggable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed black;
+  text-align: center;
+}
+
+.sponsor {
+  width: 20%;
+}
+
+#texto-nombre {
+  font-size: 2rem;
+  width: 90%;
+  height: 50px;
+}
+
+#texto-rol {
+  font-size: 1.5rem;
+  width: 50%;
+  height: 50px;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+}

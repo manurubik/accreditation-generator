@@ -1,0 +1,4 @@
+/* Importar estilos de otros archivos CSS */
+@import url("formulario.css");
+@import url("vista-previa.css");
+@import url("estilos-generales.css");
