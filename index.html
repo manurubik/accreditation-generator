@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generador de Acreditaciones</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="/scorecards-generator/css/styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js"></script>
@@ -12,32 +12,38 @@
   <body>
     <h1>Generador de Acreditaciones para Campeonatos</h1>
     <form id="form" enctype="multipart/form-data">
-      <label for="alto">Alto de la acreditación (cm):</label>
-      <input type="number" id="alto" name="alto" step="0.1" required /><br />
-      <label for="ancho">Ancho de la acreditación (cm):</label>
-      <input type="number" id="ancho" name="ancho" step="0.1" required /><br />
-      <label for="imagen">Imagen de Fondo:</label>
-      <input type="file" id="imagen" accept="image/*" required />
-      <button id="eliminar-imagen" style="display: none">Eliminar</button>
-      <br />
-      <label for="csv">Archivo CSV:</label>
-      <input type="file" id="csv" accept=".csv" required />
-      <button id="eliminar-csv" style="display: none">Eliminar</button>
-      <br />
-      <label for="fuente">Fuente (opcional):</label>
-      <input type="file" id="fuente" name="fuente" accept=".ttf, .otf" />
-      <button id="eliminar-fuente" style="display: none">Eliminar</button>
-      <br />
-      <label for="patrocinadores">Patrocinadores (opcional):</label>
-      <input type="file" id="patrocinadores" accept="image/*" multiple />
-      <button id="eliminar-patrocinadores" style="display: none">
-        Eliminar
-      </button>
-
-      <h4>(Doble click para eliminar los elementos)</h4>
-
-      <h2>Vista Previa:</h2>
+      <div id="formulario">
+        <label for="alto">Alto de la acreditación (cm):</label>
+        <input type="number" id="alto" name="alto" step="0.1" required /><br />
+        <label for="ancho">Ancho de la acreditación (cm):</label>
+        <input
+          type="number"
+          id="ancho"
+          name="ancho"
+          step="0.1"
+          required
+        /><br />
+        <label for="imagen">Imagen de Fondo:</label>
+        <input type="file" id="imagen" accept="image/*" required />
+        <button id="eliminar-imagen" style="display: none">Eliminar</button>
+        <br />
+        <label for="csv">Archivo CSV:</label>
+        <input type="file" id="csv" accept=".csv" required />
+        <button id="eliminar-csv" style="display: none">Eliminar</button>
+        <br />
+        <label for="fuente">Fuente (opcional):</label>
+        <input type="file" id="fuente" name="fuente" accept=".ttf, .otf" />
+        <button id="eliminar-fuente" style="display: none">Eliminar</button>
+        <br />
+        <label for="patrocinadores">Patrocinadores (opcional):</label>
+        <input type="file" id="patrocinadores" accept="image/*" multiple />
+        <button id="eliminar-patrocinadores" style="display: none">
+          Eliminar
+        </button>
+      </div>
       <div id="preview-container">
+        <h2>Vista Previa:</h2>
+        <h4>(Doble click para eliminar los elementos)</h4>
         <div id="vista-previa-container">
           <div id="vista-previa">
             <div id="texto-nombre" class="draggable" draggable="true">
@@ -60,10 +66,10 @@
             <button id="rol-decrease">-</button><br />
           </div>
         </div>
+        <button id="submit" type="submit">Generar Acreditaciones</button>
       </div>
-      <button id="submit" type="submit">Generar Acreditaciones</button>
     </form>
 
-    <script src="./js/main.js"></script>
+    <script src="/scorecards-generator/js/main.js"></script>
   </body>
 </html>

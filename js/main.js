@@ -45,68 +45,6 @@ function obtenerRol(row) {
   return rol;
 }
 
-function generarAcreditaciones(data, imagenURL, ancho, alto) {
-  const acreditacionesContainer = document.createElement("div");
-  acreditacionesContainer.style.display = "none";
-  document.body.appendChild(acreditacionesContainer);
-
-  data.forEach((row, index) => {
-    const nombre = row["Name"];
-    const rol = obtenerRol(row);
-
-    const acreditacion = document.createElement("div");
-    acreditacion.className = "acreditacion";
-    acreditacion.style.width = `${ancho}cm`;
-    acreditacion.style.height = `${alto}cm`;
-    acreditacion.style.backgroundImage = `url('${imagenURL}')`;
-    acreditacion.style.backgroundSize = "cover";
-    acreditacion.style.backgroundPosition = "center";
-
-    const nombreElem = document.createElement("div");
-    nombreElem.className = "nombre";
-    nombreElem.textContent = nombre;
-    nombreElem.style.position = "absolute";
-    nombreElem.style.top = document.getElementById("texto-nombre").style.top;
-    nombreElem.style.left = document.getElementById("texto-nombre").style.left;
-    nombreElem.style.transform = "translate(-50%, -50%)";
-
-    const rolElem = document.createElement("div");
-    rolElem.className = "rol";
-    rolElem.textContent = rol;
-    rolElem.style.position = "absolute";
-    rolElem.style.top = document.getElementById("texto-rol").style.top;
-    rolElem.style.left = document.getElementById("texto-rol").style.left;
-    rolElem.style.transform = "translate(-50%, -50%)";
-
-    acreditacion.appendChild(nombreElem);
-    acreditacion.appendChild(rolElem);
-    acreditacionesContainer.appendChild(acreditacion);
-
-    const dpi = window.devicePixelRatio * 96;
-
-    const anchoEnPx = Math.round((ancho * dpi) / 2.54);
-    const altoEnPx = Math.round((alto * dpi) / 2.54);
-
-    html2canvas(acreditacion, { width: anchoEnPx, height: altoEnPx })
-      .then((canvas) => {
-        const image = canvas.toDataURL("image/jpeg");
-        const link = document.createElement("a");
-        link.href = image;
-        link.download = `acreditacion_${index}.jpg`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        console.log(`Acreditación generada para ${nombre}`);
-      })
-      .catch((error) => {
-        console.error("Error al generar la imagen de la acreditación:", error);
-      });
-  });
-
-  document.body.removeChild(acreditacionesContainer);
-  console.log("Todas las acreditaciones han sido procesadas.");
-}
-
 // Función para actualizar la vista previa
 function actualizarVistaPrevia() {
   const alto = document.getElementById("alto").value;

@@ -1,0 +1,243 @@
+/* Reset CSS */
+
+/* Aplicar una box-sizing consistente a todos los elementos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ajustes generales */
+html {
+  font-family: Arial, Helvetica, sans-serif; /* Cambiar según la preferencia */
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* Cambiar según la preferencia */
+  font-size: 16px;
+}
+
+/* Ajuste para los elementos de bloque */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* Ajustes para los elementos de audio y video */
+audio,
+video {
+  display: inline-block;
+}
+
+/* Ajustes para los elementos ocultos */
+[hidden] {
+  display: none;
+}
+
+/* Ajustes para los elementos de agrupación */
+address,
+blockquote,
+dd,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+hr,
+li,
+ol,
+p,
+pre,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ajustes para los elementos de lista */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ajustes para los elementos de tabla */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Ajustes para las imágenes */
+img {
+  border-style: none;
+  max-width: 100%;
+}
+
+/* Ajustes para los elementos de formulario */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+  margin: 0;
+}
+
+/* Ajustes para los elementos de formulario con nuevos atributos */
+optgroup {
+  font-weight: bold;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: not-allowed;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button {
+  -webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+/* Ajustes para elementos multimedia */
+iframe {
+  border: 0;
+}
+
+/* Ajustes para elementos en línea */
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Ajustes para elementos de tabla */
+td,
+th {
+  padding: 0;
+}
+
+/* Ajustes para las direcciones */
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+/* Ajustes para el botón de audio en Chrome */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+/* Ajustes para los elementos en foco */
+:focus {
+  outline: none;
+}
+
+/* Ajustes para la visibilidad del scrollbar en Firefox */
+/* Por defecto, el scrollbar se oculta en Firefox */
+/* A continuación, se define su visibilidad */
+/* Firefox 64 y versiones anteriores */
+/* Solución alternativa para Firefox 65+ en el siguiente bloque */
+html {
+  scrollbar-width: auto;
+  scrollbar-color: inherit;
+}
+
+/* Firefox 65+ */
+/* Define la visibilidad del scrollbar */
+/* Ajustes específicos pueden ser añadidos aquí */
+/* Por ejemplo, scrollbar-width, scrollbar-color, etc. */
+/* Nota: Esto sólo se aplica a Firefox 65+ */
+/* Se puede omitir si la compatibilidad con versiones anteriores no es necesaria */
+@supports (overflow: overlay) {
+  html {
+    scrollbar-width: auto;
+    scrollbar-color: inherit;
+  }
+}
