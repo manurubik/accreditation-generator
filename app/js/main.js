@@ -220,9 +220,7 @@ window.onload = function () {
   actualizarVistaPrevia();
 };
 
-const inputs = document.querySelectorAll(
-  'input[type="number"], input[type="file"]'
-);
+const inputs = document.querySelectorAll("input");
 inputs.forEach((input) => {
   input.addEventListener("change", actualizarVistaPrevia);
 });

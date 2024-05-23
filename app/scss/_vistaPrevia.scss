@@ -68,27 +68,46 @@
   align-items: center;
 }
 
+.botones {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .control {
   margin: 1rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
   border: 2px solid black;
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  label {
+    font-weight: bold;
+  }
 }
 
-#nombre-increase,
-#nombre-decrease,
-#rol-increase,
-#rol-decrease,
-#restaurar-rol {
+.controller {
   margin: 0.1rem;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  padding: 10px 16px;
+  background-color: #007bff; /* Color de fondo azul */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  color: white; /* Texto blanco */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambiar cursor a puntero */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+
+  &:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+  }
+
+  &:active {
+    background-color: #003f7f; /* Color de fondo al hacer clic */
+    transform: scale(0.95); /* Efecto de reducción */
+  }
 }
