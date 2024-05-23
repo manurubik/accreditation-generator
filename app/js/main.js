@@ -138,6 +138,20 @@ function actualizarVistaPrevia() {
         reader.readAsDataURL(file);
       }
     });
+  // Agregar evento de doble clic para eliminar los elementos de texto
+  const textoNombre = document.getElementById("texto-nombre");
+  const textoRol = document.getElementById("texto-rol");
+
+  textoNombre.addEventListener("dblclick", function () {
+    alert("¡No puedes eliminar el nombre del competidor!");
+  });
+  textoRol.addEventListener("dblclick", function () {
+    const restaurarRol = document.getElementById("restaurar-rol");
+    textoRol.remove();
+    rolIncreaseBtn.style.display = "none";
+    rolDecreaseBtn.style.display = "none";
+    restaurarRol.style.display = "block";
+  });
 
   // Implementa la lógica para hacer las imágenes draggable dentro de la vista previa
   // Puedes utilizar la misma lógica que implementaste para los elementos de nombre y rol
@@ -200,18 +214,6 @@ function actualizarVistaPrevia() {
     target.setAttribute("data-x", x);
     target.setAttribute("data-y", y);
   }
-
-  // Agregar evento de doble clic para eliminar los elementos de texto
-  const textoNombre = document.getElementById("texto-nombre");
-  const textoRol = document.getElementById("texto-rol");
-
-  textoNombre.addEventListener("dblclick", function () {
-    textoNombre.remove();
-  });
-
-  textoRol.addEventListener("dblclick", function () {
-    textoRol.remove();
-  });
 }
 
 window.onload = function () {
@@ -230,6 +232,7 @@ const nombreIncreaseBtn = document.getElementById("nombre-increase");
 const nombreDecreaseBtn = document.getElementById("nombre-decrease");
 const rolIncreaseBtn = document.getElementById("rol-increase");
 const rolDecreaseBtn = document.getElementById("rol-decrease");
+const restaurarRol = document.getElementById("restaurar-rol");
 
 // Evento click para el botón de aumentar tamaño del nombre
 nombreIncreaseBtn.addEventListener("click", function () {
@@ -249,6 +252,33 @@ rolIncreaseBtn.addEventListener("click", function () {
 // Evento click para el botón de disminuir tamaño del rol
 rolDecreaseBtn.addEventListener("click", function () {
   disminuirTamaño("texto-rol");
+});
+
+restaurarRol.addEventListener("click", function () {
+  const vistaPrevia = document.getElementById("vista-previa");
+  const restaurarRol = document.getElementById("restaurar-rol");
+  // Crear un nuevo elemento #texto-rol
+  const nuevoTextoRol = document.createElement("div");
+  nuevoTextoRol.id = "texto-rol";
+  nuevoTextoRol.classList.add("draggable");
+  nuevoTextoRol.draggable = true;
+  nuevoTextoRol.textContent = "Competidor";
+
+  // Añadir evento de doble clic al nuevo elemento
+  nuevoTextoRol.addEventListener("dblclick", function () {
+    nuevoTextoRol.remove();
+    rolIncreaseBtn.style.display = "none";
+    rolDecreaseBtn.style.display = "none";
+    restaurarRol.style.display = "block";
+  });
+
+  // Añadir el nuevo elemento a la vista previa
+  vistaPrevia.appendChild(nuevoTextoRol);
+
+  // Mostrar los botones de control de tamaño
+  rolIncreaseBtn.style.display = "inline";
+  rolDecreaseBtn.style.display = "inline";
+  restaurarRol.style.display = "none";
 });
 
 // Función para aumentar el tamaño de un elemento

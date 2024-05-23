@@ -10,11 +10,11 @@ const browsersync = require("browser-sync").create();
 // Rutas de archivos
 const paths = {
   styles: {
-    src: "app/scss/styles.scss",
+    src: "app/scss/**/*.scss",
     dest: "dist/css/",
   },
   scripts: {
-    src: "app/js/main.js",
+    src: "app/js/**/*.js",
     dest: "dist/js/",
   },
   html: {
