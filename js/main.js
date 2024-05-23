@@ -204,7 +204,6 @@ function actualizarVistaPrevia() {
   // Agregar evento de doble clic para eliminar los elementos de texto
   const textoNombre = document.getElementById("texto-nombre");
   const textoRol = document.getElementById("texto-rol");
-  const sponsor = document.getElementById("sponsor");
 
   textoNombre.addEventListener("dblclick", function () {
     textoNombre.remove();

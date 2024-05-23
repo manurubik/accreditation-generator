@@ -1,12 +1,14 @@
+body {
+  min-width: 750px;
+}
+
 form {
   margin: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
 }
 
 #formulario {
@@ -27,14 +29,12 @@ h1 {
 
 label {
   display: block;
-  margin-bottom: 8px;
 }
 
 input[type="number"],
 input[type="file"] {
   width: 100%;
   padding: 10px;
-  margin-bottom: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -43,9 +43,6 @@ input[type="file"] {
 input[type="file"] {
   cursor: pointer;
   padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 button {
@@ -64,5 +61,4 @@ button:hover {
 
 #submit {
   display: block;
-  margin: 2rem auto;
 }

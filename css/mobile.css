@@ -1,0 +1,36 @@
+/* Media query para dispositivos con ancho máximo de 600px (típicamente dispositivos móviles) */
+@media only screen and (orientation: portrait) {
+  /* Cambiar la dirección del flexbox a vertical en dispositivos móviles */
+  body {
+    min-width: 371px;
+  }
+  form {
+    flex-direction: column;
+  }
+
+  #preview-container {
+    margin: 1rem 0;
+  }
+
+  #vista-previa-container {
+    width: 90%;
+  }
+
+  #texto-nombre {
+    font-size: 1.45em;
+    width: 90%;
+  }
+
+  #texto-rol {
+    font-size: 1rem;
+    width: 50%;
+  }
+
+  .controls {
+    margin: 0.5rem;
+    flex-direction: column;
+  }
+  #controls {
+    flex-direction: column;
+  }
+}
