@@ -43,9 +43,10 @@
   border: 2px dashed #007bff;
   border-radius: 6px;
   text-align: center;
-}
-.draggable:hover {
-  background-color: rgba(0, 123, 255, 0.1);
+
+  &:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
 }
 
 #texto-nombre {

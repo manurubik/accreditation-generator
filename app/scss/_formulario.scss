@@ -31,18 +31,24 @@ label {
   display: block;
 }
 
-input[type="number"],
-input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+input {
+  &[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
-input[type="file"] {
-  cursor: pointer;
-  padding: 1rem;
+  &[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 1rem;
+  }
 }
 
 button {
@@ -53,10 +59,10 @@ button {
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
 
-button:hover {
-  background-color: #0056b3;
+  &:hover {
+    background-color: #0056b3;
+  }
 }
 
 #submit {

@@ -1,17 +1,26 @@
 /* Reset CSS */
 
 /* Aplicar una box-sizing consistente a todos los elementos */
-*,
-*::before,
-*::after {
+
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 /* Ajustes generales */
+
 html {
-  font-family: Arial, Helvetica, sans-serif; /* Cambiar según la preferencia */
+  font-family: Arial, Helvetica, sans-serif;
+
+  /* Cambiar según la preferencia */
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -20,11 +29,14 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif; /* Cambiar según la preferencia */
+  font-family: Arial, sans-serif;
+
+  /* Cambiar según la preferencia */
   font-size: 16px;
 }
 
 /* Ajuste para los elementos de bloque */
+
 article,
 aside,
 details,
@@ -41,17 +53,20 @@ summary {
 }
 
 /* Ajustes para los elementos de audio y video */
+
 audio,
 video {
   display: inline-block;
 }
 
 /* Ajustes para los elementos ocultos */
+
 [hidden] {
   display: none;
 }
 
 /* Ajustes para los elementos de agrupación */
+
 address,
 blockquote,
 dd,
@@ -65,14 +80,21 @@ hr,
 li,
 ol,
 p,
-pre,
+pre {
+  margin: 0;
+  padding: 0;
+}
+
 ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 /* Ajustes para los elementos de lista */
-ul,
+
 ol {
   list-style: none;
   margin: 0;
@@ -80,18 +102,21 @@ ol {
 }
 
 /* Ajustes para los elementos de tabla */
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 /* Ajustes para las imágenes */
+
 img {
   border-style: none;
   max-width: 100%;
 }
 
 /* Ajustes para los elementos de formulario */
+
 button,
 input,
 optgroup,
@@ -102,6 +127,7 @@ textarea {
 }
 
 /* Ajustes para los elementos de formulario con nuevos atributos */
+
 optgroup {
   font-weight: bold;
 }
@@ -117,11 +143,17 @@ select {
 }
 
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html input[type="button"] {
   cursor: pointer;
   -webkit-appearance: button;
+}
+
+input {
+  &[type="reset"],
+  &[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+  }
 }
 
 button[disabled],
@@ -129,41 +161,41 @@ html input[disabled] {
   cursor: not-allowed;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
+input {
+  &[type="checkbox"],
+  &[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+  }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
+  &[type="number"] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      height: auto;
+    }
+  }
 
-input[type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-}
+  &[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
 
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button {
-  -webkit-appearance: none;
-}
-
-input[type="search"]::-webkit-search-results-decoration {
-  -webkit-appearance: none;
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+  }
 }
 
 /* Ajustes para elementos multimedia */
+
 iframe {
   border: 0;
 }
 
 /* Ajustes para elementos en línea */
+
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
@@ -196,12 +228,14 @@ sup {
 }
 
 /* Ajustes para elementos de tabla */
+
 td,
 th {
   padding: 0;
 }
 
 /* Ajustes para las direcciones */
+
 abbr,
 acronym {
   border: 0;
@@ -209,12 +243,14 @@ acronym {
 }
 
 /* Ajustes para el botón de audio en Chrome */
+
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
 }
 
 /* Ajustes para los elementos en foco */
+
 :focus {
   outline: none;
 }
@@ -224,6 +260,7 @@ acronym {
 /* A continuación, se define su visibilidad */
 /* Firefox 64 y versiones anteriores */
 /* Solución alternativa para Firefox 65+ en el siguiente bloque */
+
 html {
   scrollbar-width: auto;
   scrollbar-color: inherit;

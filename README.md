@@ -5,60 +5,95 @@ Este proyecto es una aplicación web que permite generar acreditaciones personal
 ## Características
 
 - Configuración de tamaño de las acreditaciones.
-- Subida de imagen de fondo.
-- Carga de datos desde archivo CSV.
-- Subida de fuente personalizada opcional.
+- Carga de imagen de fondo.
+- Carga de archivo CSV para datos de acreditaciones.
+- Opción para cargar fuentes personalizadas.
 - Subida de imágenes de patrocinadores opcional.
 - Vista previa interactiva y editable.
-- Generación de acreditaciones.
+- Exportación de acreditaciones como imágenes.
+- Diseño responsivo.
+
+## Requisitos
+
+- Node.js
+- npm
 
 ## Tecnologías Utilizadas
 
 - HTML
 - CSS
+- SCSS
 - JavaScript
+- [Gulp](https://gulpjs.com/) para la transformación de SCSS y JS, y servidor de desarrollo.
 - [PapaParse](https://www.papaparse.com/) para la manipulación de archivos CSV.
 - [html2canvas](https://html2canvas.hertzen.com/) para la generación de capturas de pantalla.
 - [interact.js](https://interactjs.io/) para la interactividad de los elementos.
 
 ## Estructura del Proyecto
 
+```txt
 generador-acreditaciones/
-│
-├── css/
-│ └── styles.css
-│
-├── js/
-│ └── main.js
-│
+├── app/
+│ └── js/
+│   └── main.js
+│ └── scss/
+│   └── _formulario.scss
+│   └── _mobile.scss
+│   └── _reset.scss
+│   └── _vistaPrevia.scss
+│   └── styles.scss
+├── dist/
+│ └── css/
+│   └── styles.css
+│   └── styles.css.map
+│ └── js/
+│   └── main.js
+├── node_modules
+├── .gitignore
+├── gulpfile.js
 ├── index.html
-├── README.md
-└── package.json
+├── LICENSE
+├── package-lock.json
+├── package.json
+└── README.md
+```
 
 ## Instalación
 
 1. Clona el repositorio:
 
-```bash
-git clone https://github.com/manurubik/accreditation-generator.git
-```
+   ```bash
+   git clone https://github.com/manurubik/accreditation-generator.git
+   ```
 
 2. Navega al directorio del proyecto
 
-```bash
-cd accreditation-generator
-```
+   ```bash
+   cd accreditation-generator
+   ```
+
+3. Instala las dependencias
+
+   ```bash
+   npm install
+   ```
 
 ## Uso
 
-1. Abre el archivo index.html en tu navegador web.
-2. Rellena los campos del formulario:
+1. Inicia Gulp
+
+   ```bash
+   npm start
+   ```
+
+2. Abre el archivo index.html en tu navegador web (puede que se abra automáticamente).
+3. Rellena los campos del formulario:
    - Introduce el alto y el ancho de la acreditación (en cm).
    - Sube una imagen de fondo.
    - Sube un archivo CSV con los datos (se obtiene como organizador en la web de la WCA).
    - Opcionalmente, sube una fuente personalizada y/o imágenes de patrocinadores.
-3. Usa la vista previa para ajustar el diseño de las acreditaciones.
-4. Haz clic en "Generar Acreditaciones" para crear las acreditaciones.
+4. Usa la vista previa para ajustar el diseño de las acreditaciones.
+5. Haz clic en "Generar Acreditaciones" para crear las acreditaciones.
 
 ## Estilos Responsivos
 

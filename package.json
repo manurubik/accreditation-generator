@@ -1,0 +1,31 @@
+{
+  "name": "accreditation-generator",
+  "version": "1.0.0",
+  "description": "Este proyecto es una aplicación web que permite generar acreditaciones personalizadas para campeonatos. Los usuarios pueden configurar el tamaño de las acreditaciones, subir imágenes de fondo, cargar datos desde un archivo CSV y personalizar el diseño.",
+  "main": "main.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "keywords": [
+    "accreditation",
+    "generator",
+    "webapp"
+  ],
+  "author": "Manuel Prieto de Antón",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-postcss": "^9.0.0",
+    "autoprefixer": "^10.4.12",
+    "cssnano": "^5.1.13",
+    "gulp-babel": "^8.0.0",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.12",
+    "gulp-terser": "^2.0.1",
+    "browser-sync": "^2.27.10"
+  },
+  "dependencies": {
+    "sass": "^1.53.0"
+  }
+}
