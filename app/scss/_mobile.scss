@@ -15,7 +15,11 @@
   }
 
   #vista-previa-container {
-    width: 90%;
+    width: 50%;
+  }
+
+  #vista-previa {
+    min-height: 15rem;
   }
 
   #texto-nombre {
@@ -34,6 +38,6 @@
   }
 
   #controls {
-    flex-direction: column;
+    flex-direction: row;
   }
 }

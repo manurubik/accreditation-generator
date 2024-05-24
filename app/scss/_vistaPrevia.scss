@@ -17,7 +17,7 @@
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   height: 100%;
   width: 50%;
@@ -52,13 +52,14 @@
 #texto-nombre {
   font-size: 1.7rem;
   width: 90%;
-  height: 5rem;
 }
 
 #texto-rol {
-  font-size: 1.3rem;
-  width: 50%;
-  height: 3rem;
+  font-size: 1.4rem;
+}
+
+#texto-titulo {
+  font-size: 2rem;
 }
 
 #controls {
@@ -93,21 +94,8 @@
 .controller {
   margin: 0.1rem;
   padding: 10px 16px;
-  background-color: #007bff; /* Color de fondo azul */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  color: white; /* Texto blanco */
-  font-size: 16px; /* Tamaño de la fuente */
-  cursor: pointer; /* Cambiar cursor a puntero */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
 
-  &:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el mouse */
-    transform: scale(1.05); /* Efecto de agrandamiento */
-  }
-
-  &:active {
-    background-color: #003f7f; /* Color de fondo al hacer clic */
-    transform: scale(0.95); /* Efecto de reducción */
-  }
+#submit {
+  padding: 0.5rem;
 }

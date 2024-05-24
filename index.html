@@ -10,41 +10,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js"></script>
   </head>
   <body>
-    <h1>Generador de Acreditaciones para Campeonatos</h1>
+    <h1 id="titulo">Generador de Acreditaciones para Campeonatos</h1>
     <form id="form" enctype="multipart/form-data">
       <div id="formulario">
+        <label for="nombreOpen">Nombre del campeonato:</label>
+        <input type="text" id="nombreOpen" />
+        <button id="añadirNombreOpen" class="botonForm" style="display: none">
+          Añadir
+        </button>
         <label for="alto">Alto de la acreditación (cm):</label>
         <input type="number" id="alto" name="alto" step="0.1" required />
         <label for="ancho">Ancho de la acreditación (cm):</label>
         <input type="number" id="ancho" name="ancho" step="0.1" required />
         <label for="imagen">Imagen de Fondo:</label>
         <input type="file" id="imagen" accept="image/*" required />
-        <button
-          id="eliminar-imagen"
-          class="eliminarBoton"
-          style="display: none"
-        >
+        <button id="eliminar-imagen" class="botonForm" style="display: none">
           Eliminar
         </button>
         <label for="csv">Archivo CSV:</label>
         <input type="file" id="csv" accept=".csv" required />
-        <button id="eliminar-csv" class="eliminarBoton" style="display: none">
+        <button id="eliminar-csv" class="botonForm" style="display: none">
           Eliminar
         </button>
         <label for="fuente">Fuente (opcional):</label>
         <input type="file" id="fuente" name="fuente" accept=".ttf, .otf" />
-        <button
-          id="eliminar-fuente"
-          class="eliminarBoton"
-          style="display: none"
-        >
+        <button id="eliminar-fuente" class="botonForm" style="display: none">
           Eliminar
         </button>
         <label for="patrocinadores">Patrocinadores (opcional):</label>
         <input type="file" id="patrocinadores" accept="image/*" multiple />
         <button
           id="eliminar-patrocinadores"
-          class="eliminarBoton"
+          class="botonForm"
           style="display: none"
         >
           Eliminar
@@ -52,9 +49,17 @@
       </div>
       <div id="preview-container">
         <h2>Vista Previa:</h2>
-        <h4>(Doble click para eliminar los elementos)</h4>
+        <h3>(Doble click para eliminar los elementos)</h3>
         <div id="vista-previa-container">
           <div id="vista-previa">
+            <div
+              id="texto-titulo"
+              class="draggable"
+              draggable="true"
+              style="display: none"
+            >
+              Competicion
+            </div>
             <div id="texto-nombre" class="draggable" draggable="true">
               Nombre & Apellido
             </div>
@@ -64,16 +69,23 @@
           </div>
         </div>
         <div id="controls">
+          <div id="controlTitulo" class="control" style="display: none">
+            <label for="titulo-size">Titulo:</label>
+            <div id="titulo-size" class="botones">
+              <button class="controller" id="titulo-increase">+</button>
+              <button class="controller" id="titulo-decrease">-</button>
+            </div>
+          </div>
           <div class="control">
             <label for="nombre-size">Nombre:</label>
-            <div class="botones">
+            <div id="nombre-size" class="botones">
               <button class="controller" id="nombre-increase">+</button>
               <button class="controller" id="nombre-decrease">-</button>
             </div>
           </div>
           <div class="control">
             <label for="rol-size">Rol:</label>
-            <div class="botones">
+            <div id="rol-size" class="botones">
               <button class="controller" id="rol-increase">+</button>
               <button class="controller" id="rol-decrease">-</button>
               <button

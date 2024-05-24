@@ -150,7 +150,7 @@ function actualizarVistaPrevia() {
     textoRol.remove();
     rolIncreaseBtn.style.display = "none";
     rolDecreaseBtn.style.display = "none";
-    restaurarRol.style.display = "block";
+    restaurarRol.style.display = "inline-block";
   });
 
   // Implementa la lógica para hacer las imágenes draggable dentro de la vista previa
@@ -225,60 +225,6 @@ inputs.forEach((input) => {
   input.addEventListener("change", actualizarVistaPrevia);
 });
 
-// Obtener los elementos de los controles
-const nombreIncreaseBtn = document.getElementById("nombre-increase");
-const nombreDecreaseBtn = document.getElementById("nombre-decrease");
-const rolIncreaseBtn = document.getElementById("rol-increase");
-const rolDecreaseBtn = document.getElementById("rol-decrease");
-const restaurarRol = document.getElementById("restaurar-rol");
-
-// Evento click para el botón de aumentar tamaño del nombre
-nombreIncreaseBtn.addEventListener("click", function () {
-  aumentarTamaño("texto-nombre");
-});
-
-// Evento click para el botón de disminuir tamaño del nombre
-nombreDecreaseBtn.addEventListener("click", function () {
-  disminuirTamaño("texto-nombre");
-});
-
-// Evento click para el botón de aumentar tamaño del rol
-rolIncreaseBtn.addEventListener("click", function () {
-  aumentarTamaño("texto-rol");
-});
-
-// Evento click para el botón de disminuir tamaño del rol
-rolDecreaseBtn.addEventListener("click", function () {
-  disminuirTamaño("texto-rol");
-});
-
-restaurarRol.addEventListener("click", function () {
-  const vistaPrevia = document.getElementById("vista-previa");
-  const restaurarRol = document.getElementById("restaurar-rol");
-  // Crear un nuevo elemento #texto-rol
-  const nuevoTextoRol = document.createElement("div");
-  nuevoTextoRol.id = "texto-rol";
-  nuevoTextoRol.classList.add("draggable");
-  nuevoTextoRol.draggable = true;
-  nuevoTextoRol.textContent = "Competidor";
-
-  // Añadir evento de doble clic al nuevo elemento
-  nuevoTextoRol.addEventListener("dblclick", function () {
-    nuevoTextoRol.remove();
-    rolIncreaseBtn.style.display = "none";
-    rolDecreaseBtn.style.display = "none";
-    restaurarRol.style.display = "block";
-  });
-
-  // Añadir el nuevo elemento a la vista previa
-  vistaPrevia.appendChild(nuevoTextoRol);
-
-  // Mostrar los botones de control de tamaño
-  rolIncreaseBtn.style.display = "inline";
-  rolDecreaseBtn.style.display = "inline";
-  restaurarRol.style.display = "none";
-});
-
 // Función para aumentar el tamaño de un elemento
 function aumentarTamaño(idElemento) {
   const elemento = document.getElementById(idElemento);
@@ -294,6 +240,113 @@ function disminuirTamaño(idElemento) {
   fontSize -= 1; // Disminuir el tamaño en 1px
   elemento.style.fontSize = `${fontSize}px`;
 }
+
+// Obtener los elementos de los controles
+const nombreIncreaseBtn = document.getElementById("nombre-increase");
+const nombreDecreaseBtn = document.getElementById("nombre-decrease");
+const rolIncreaseBtn = document.getElementById("rol-increase");
+const rolDecreaseBtn = document.getElementById("rol-decrease");
+const restaurarRol = document.getElementById("restaurar-rol");
+
+// Evento click para el botón de aumentar tamaño del nombre
+nombreIncreaseBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  aumentarTamaño("texto-nombre");
+});
+
+// Evento click para el botón de disminuir tamaño del nombre
+nombreDecreaseBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  disminuirTamaño("texto-nombre");
+});
+
+// Evento click para el botón de aumentar tamaño del rol
+rolIncreaseBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  aumentarTamaño("texto-rol");
+});
+
+// Evento click para el botón de disminuir tamaño del rol
+rolDecreaseBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  disminuirTamaño("texto-rol");
+});
+
+restaurarRol.addEventListener("click", function (e) {
+  e.preventDefault();
+  const vistaPrevia = document.getElementById("vista-previa");
+  // Crear un nuevo elemento #texto-rol
+  const nuevoTextoRol = document.createElement("div");
+  nuevoTextoRol.id = "texto-rol";
+  nuevoTextoRol.classList.add("draggable");
+  nuevoTextoRol.draggable = true;
+  nuevoTextoRol.textContent = "Competidor";
+
+  // Añadir evento de doble clic al nuevo elemento
+  nuevoTextoRol.addEventListener("dblclick", function () {
+    nuevoTextoRol.remove();
+    rolIncreaseBtn.style.display = "none";
+    rolDecreaseBtn.style.display = "none";
+    restaurarRol.style.display = "inline-block";
+  });
+
+  // Añadir el nuevo elemento a la vista previa
+  vistaPrevia.appendChild(nuevoTextoRol);
+
+  // Mostrar los botones de control de tamaño
+  rolIncreaseBtn.style.display = "inline";
+  rolDecreaseBtn.style.display = "inline";
+  restaurarRol.style.display = "none";
+});
+
+const nombreOpenInput = document.getElementById("nombreOpen");
+const añadirNombre = document.getElementById("añadirNombreOpen");
+let titulo = document.getElementById("titulo");
+let nombreCampeonato = "";
+
+nombreOpenInput.addEventListener("input", function () {
+  nombreCampeonato = nombreOpenInput.value.trim();
+  titulo.innerHTML = nombreCampeonato
+    ? `Generador de Acreditaciones para el ${nombreCampeonato}`
+    : "Generador de Acreditaciones para Campeonatos";
+  añadirNombre.style.display = nombreCampeonato ? "inline-block" : "none";
+});
+
+añadirNombre.addEventListener("click", function (e) {
+  e.preventDefault();
+  // Crear un nuevo elemento .draggable
+  const nuevoTitulo = document.getElementById("texto-titulo");
+  const controlTitulo = document.getElementById("controlTitulo");
+
+  nuevoTitulo.style.display = "flex";
+  nuevoTitulo.textContent = nombreCampeonato;
+
+  // Añadir evento de doble clic al nuevo elemento
+  nuevoTitulo.addEventListener("dblclick", function () {
+    nuevoTitulo.style.display = "none";
+    controlTitulo.style.display = "none";
+    añadirNombre.style.display = "inline-block";
+  });
+
+  controlTitulo.style.display = "flex";
+  añadirNombre.style.display = "none";
+});
+
+// Obtener referencias a los botones de aumentar y disminuir tamaño del título
+let tituloIncreaseBtn = document.getElementById("titulo-increase");
+let tituloDecreaseBtn = document.getElementById("titulo-decrease");
+
+// Evento click para el botón de aumentar tamaño del título
+tituloIncreaseBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  aumentarTamaño("texto-titulo");
+});
+
+// Evento click para el botón de disminuir tamaño del título
+tituloDecreaseBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  disminuirTamaño("texto-titulo");
+});
 
 // Mostrar el botón de eliminar al seleccionar un archivo
 document.getElementById("imagen").addEventListener("change", function () {
@@ -321,14 +374,16 @@ document
 // Agregar funcionalidad para eliminar el archivo seleccionado
 document
   .getElementById("eliminar-imagen")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (e) {
+    e.preventDefault();
     const input = document.getElementById("imagen");
     input.value = ""; // Limpiar el valor del input
     this.style.display = "none"; // Ocultar el botón de eliminar
     actualizarVistaPrevia(); // Actualizar la vista previa
   });
 
-document.getElementById("eliminar-csv").addEventListener("click", function () {
+document.getElementById("eliminar-csv").addEventListener("click", function (e) {
+  e.preventDefault();
   const input = document.getElementById("csv");
   input.value = ""; // Limpiar el valor del input
   this.style.display = "none"; // Ocultar el botón de eliminar
@@ -337,7 +392,8 @@ document.getElementById("eliminar-csv").addEventListener("click", function () {
 
 document
   .getElementById("eliminar-fuente")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (e) {
+    e.preventDefault();
     const input = document.getElementById("fuente");
     input.value = ""; // Limpiar el valor del input
     this.style.display = "none"; // Ocultar el botón de eliminar
@@ -347,7 +403,8 @@ document
 
 document
   .getElementById("eliminar-patrocinadores")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (e) {
+    e.preventDefault();
     const input = document.getElementById("patrocinadores");
     input.value = ""; // Limpiar el valor del input
     this.style.display = "none"; // Ocultar el botón de eliminar
