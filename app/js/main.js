@@ -312,7 +312,9 @@ nombreOpenInput.addEventListener("input", function () {
   añadirNombre.style.display = nombreCampeonato ? "inline-block" : "none";
 });
 
-añadirNombre.addEventListener("click", function (e) {
+añadirNombre.addEventListener("click", añadirTitulo);
+
+function añadirTitulo(e) {
   e.preventDefault();
   // Crear un nuevo elemento .draggable
   const nuevoTitulo = document.getElementById("texto-titulo");
@@ -330,8 +332,7 @@ añadirNombre.addEventListener("click", function (e) {
 
   controlTitulo.style.display = "flex";
   añadirNombre.style.display = "none";
-});
-
+}
 // Obtener referencias a los botones de aumentar y disminuir tamaño del título
 let tituloIncreaseBtn = document.getElementById("titulo-increase");
 let tituloDecreaseBtn = document.getElementById("titulo-decrease");

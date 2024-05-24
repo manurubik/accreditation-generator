@@ -19,8 +19,10 @@
   position: relative;
   padding: 0.5rem;
   display: flex;
-  height: 100%;
+  height: 80%;
   width: 50%;
+  max-width: 35rem;
+  max-height: 35rem;
 }
 
 #vista-previa {
@@ -37,6 +39,7 @@
 }
 
 .draggable {
+  position: absolute;
   display: flex;
   align-items: center;
   place-content: center;
@@ -52,14 +55,19 @@
 #texto-nombre {
   font-size: 1.7rem;
   width: 90%;
+  top: 50%;
 }
 
 #texto-rol {
   font-size: 1.4rem;
+  width: 60%;
+  top: 70%;
 }
 
 #texto-titulo {
   font-size: 2rem;
+  width: 90%;
+  top: 20%;
 }
 
 #controls {

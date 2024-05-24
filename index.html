@@ -19,9 +19,23 @@
           Añadir
         </button>
         <label for="alto">Alto de la acreditación (cm):</label>
-        <input type="number" id="alto" name="alto" step="0.1" required />
+        <input
+          type="number"
+          id="alto"
+          name="alto"
+          step="0.1"
+          required
+          placeholder="Tamaño máximo 15cm"
+        />
         <label for="ancho">Ancho de la acreditación (cm):</label>
-        <input type="number" id="ancho" name="ancho" step="0.1" required />
+        <input
+          type="number"
+          id="ancho"
+          name="ancho"
+          step="0.1"
+          required
+          placeholder="Tamaño máximo 15cm"
+        />
         <label for="imagen">Imagen de Fondo:</label>
         <input type="file" id="imagen" accept="image/*" required />
         <button id="eliminar-imagen" class="botonForm" style="display: none">
@@ -37,7 +51,7 @@
         <button id="eliminar-fuente" class="botonForm" style="display: none">
           Eliminar
         </button>
-        <label for="patrocinadores">Patrocinadores (opcional):</label>
+        <label for="patrocinadores">Logo y patrocinadores (opcional):</label>
         <input type="file" id="patrocinadores" accept="image/*" multiple />
         <button
           id="eliminar-patrocinadores"
