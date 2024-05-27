@@ -1,33 +1,3 @@
-document.getElementById("form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  console.log("Formulario enviado, procesando...");
-
-  const alto = document.getElementById("alto").value;
-  const ancho = document.getElementById("ancho").value;
-  const imagen = document.getElementById("imagen").files[0];
-  const csvFile = document.getElementById("csv").files[0];
-  const fuente = document.getElementById("fuente").value; // Obtener la fuente
-
-  if (imagen && csvFile && fuente) {
-    console.log("Imagen, archivo CSV y fuente seleccionados.");
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      const imagenURL = event.target.result;
-      Papa.parse(csvFile, {
-        header: true,
-        complete: function (results) {
-          console.log("CSV procesado, generando acreditaciones...");
-          const data = results.data;
-          generarAcreditaciones(data, imagenURL, ancho, alto, fuente); // Pasar la fuente a la función generarAcreditaciones
-        },
-      });
-    };
-    reader.readAsDataURL(imagen);
-  } else {
-    console.error("Falta la imagen, el archivo CSV o la fuente.");
-  }
-});
-
 // Función para obtener el rol del participante
 function obtenerRol(row) {
   let rol = "";
@@ -138,82 +108,65 @@ function actualizarVistaPrevia() {
         reader.readAsDataURL(file);
       }
     });
-  // Agregar evento de doble clic para eliminar los elementos de texto
-  const textoNombre = document.getElementById("texto-nombre");
-  const textoRol = document.getElementById("texto-rol");
+}
 
-  textoNombre.addEventListener("dblclick", function () {
-    alert("¡No puedes eliminar el nombre del competidor!");
+// Hacer los elementos draggable con Interact.js
+interact(".draggable")
+  .draggable({
+    listeners: { move: dragMoveListener },
+    inertia: false,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: "parent",
+        endOnly: true,
+      }),
+    ],
+  })
+  .resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+
+    listeners: { move: resizeListener },
+    inertia: false,
+    modifiers: [
+      interact.modifiers.restrictEdges({
+        outer: "parent",
+      }),
+      interact.modifiers.restrictSize({
+        min: { width: 50, height: 50 },
+      }),
+    ],
   });
-  textoRol.addEventListener("dblclick", function () {
-    const restaurarRol = document.getElementById("restaurar-rol");
-    textoRol.remove();
-    rolIncreaseBtn.style.display = "none";
-    rolDecreaseBtn.style.display = "none";
-    restaurarRol.style.display = "inline-block";
-  });
 
-  // Implementa la lógica para hacer las imágenes draggable dentro de la vista previa
-  // Puedes utilizar la misma lógica que implementaste para los elementos de nombre y rol
+function resizeListener(event) {
+  var target = event.target;
+  var x = parseFloat(target.getAttribute("data-x")) || 0;
+  var y = parseFloat(target.getAttribute("data-y")) || 0;
 
-  // Hacer los elementos draggable con Interact.js
-  interact(".draggable")
-    .draggable({
-      listeners: { move: dragMoveListener },
-      inertia: false,
-      modifiers: [
-        interact.modifiers.restrictRect({
-          restriction: "parent",
-          endOnly: true,
-        }),
-      ],
-    })
-    .resizable({
-      edges: { left: true, right: true, bottom: true, top: true },
+  // update the element's style
+  target.style.width = event.rect.width + "px";
+  target.style.height = event.rect.height + "px";
 
-      listeners: { move: resizeListener },
-      inertia: false,
-      modifiers: [
-        interact.modifiers.restrictEdges({
-          outer: "parent",
-        }),
-        interact.modifiers.restrictSize({
-          min: { width: 50, height: 50 },
-        }),
-      ],
-    });
+  // translate when resizing from top or left edges
+  x += event.deltaRect.left;
+  y += event.deltaRect.top;
 
-  function resizeListener(event) {
-    var target = event.target;
-    var x = parseFloat(target.getAttribute("data-x")) || 0;
-    var y = parseFloat(target.getAttribute("data-y")) || 0;
+  target.style.transform = "translate(" + x + "px," + y + "px)";
 
-    // update the element's style
-    target.style.width = event.rect.width + "px";
-    target.style.height = event.rect.height + "px";
+  target.setAttribute("data-x", x);
+  target.setAttribute("data-y", y);
+}
+function dragMoveListener(event) {
+  const target = event.target;
+  // keep the dragged position in the data-x/data-y attributes
+  const x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+  const y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
 
-    // translate when resizing from top or left edges
-    x += event.deltaRect.left;
-    y += event.deltaRect.top;
+  // translate the element
+  target.style.transform = `translate(${x}px, ${y}px)`;
 
-    target.style.transform = "translate(" + x + "px," + y + "px)";
-
-    target.setAttribute("data-x", x);
-    target.setAttribute("data-y", y);
-  }
-  function dragMoveListener(event) {
-    const target = event.target;
-    // keep the dragged position in the data-x/data-y attributes
-    const x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-    const y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-
-    // translate the element
-    target.style.transform = `translate(${x}px, ${y}px)`;
-
-    // update the posiion attributes
-    target.setAttribute("data-x", x);
-    target.setAttribute("data-y", y);
-  }
+  // update the posiion attributes
+  target.setAttribute("data-x", x);
+  target.setAttribute("data-y", y);
 }
 
 window.onload = function () {
@@ -241,35 +194,35 @@ function disminuirTamaño(idElemento) {
   elemento.style.fontSize = `${fontSize}px`;
 }
 
-// Obtener los elementos de los controles
-const nombreIncreaseBtn = document.getElementById("nombre-increase");
-const nombreDecreaseBtn = document.getElementById("nombre-decrease");
-const rolIncreaseBtn = document.getElementById("rol-increase");
-const rolDecreaseBtn = document.getElementById("rol-decrease");
+function assignButtonEvent(id, action, target) {
+  const btn = document.getElementById(id);
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window[action](target);
+  });
+}
+
+assignButtonEvent("nombre-increase", "aumentarTamaño", "texto-nombre");
+assignButtonEvent("nombre-decrease", "disminuirTamaño", "texto-nombre");
+assignButtonEvent("rol-increase", "aumentarTamaño", "texto-rol");
+assignButtonEvent("rol-decrease", "disminuirTamaño", "texto-rol");
+assignButtonEvent("titulo-increase", "aumentarTamaño", "texto-titulo");
+assignButtonEvent("titulo-decrease", "disminuirTamaño", "texto-titulo");
+
+// Agregar evento de doble clic para eliminar los elementos de texto
+const textoNombre = document.getElementById("texto-nombre");
+const textoRol = document.getElementById("texto-rol");
+
+textoNombre.addEventListener("dblclick", function () {
+  alert("¡No puedes eliminar el nombre del competidor!");
+});
+
 const restaurarRol = document.getElementById("restaurar-rol");
-
-// Evento click para el botón de aumentar tamaño del nombre
-nombreIncreaseBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  aumentarTamaño("texto-nombre");
-});
-
-// Evento click para el botón de disminuir tamaño del nombre
-nombreDecreaseBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  disminuirTamaño("texto-nombre");
-});
-
-// Evento click para el botón de aumentar tamaño del rol
-rolIncreaseBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  aumentarTamaño("texto-rol");
-});
-
-// Evento click para el botón de disminuir tamaño del rol
-rolDecreaseBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  disminuirTamaño("texto-rol");
+textoRol.addEventListener("dblclick", function () {
+  textoRol.remove();
+  rolIncreaseBtn.style.display = "none";
+  rolDecreaseBtn.style.display = "none";
+  restaurarRol.style.display = "inline-block";
 });
 
 restaurarRol.addEventListener("click", function (e) {
@@ -333,21 +286,6 @@ function añadirTitulo(e) {
   controlTitulo.style.display = "flex";
   añadirNombre.style.display = "none";
 }
-// Obtener referencias a los botones de aumentar y disminuir tamaño del título
-let tituloIncreaseBtn = document.getElementById("titulo-increase");
-let tituloDecreaseBtn = document.getElementById("titulo-decrease");
-
-// Evento click para el botón de aumentar tamaño del título
-tituloIncreaseBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  aumentarTamaño("texto-titulo");
-});
-
-// Evento click para el botón de disminuir tamaño del título
-tituloDecreaseBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  disminuirTamaño("texto-titulo");
-});
 
 // Mostrar el botón de eliminar al seleccionar un archivo
 document.getElementById("imagen").addEventListener("change", function () {

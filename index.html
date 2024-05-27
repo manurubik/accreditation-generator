@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generador de Acreditaciones</title>
     <link rel="stylesheet" href="dist/css/styles.css" type="text/css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js"></script>
   </head>
   <body>
@@ -25,7 +23,7 @@
           name="alto"
           step="0.1"
           required
-          placeholder="Tamaño máximo 15cm"
+          placeholder="Min: 5cm // Max: 15cm"
         />
         <label for="ancho">Ancho de la acreditación (cm):</label>
         <input
@@ -34,7 +32,7 @@
           name="ancho"
           step="0.1"
           required
-          placeholder="Tamaño máximo 15cm"
+          placeholder="Min: 5cm // Max: 15cm"
         />
         <label for="imagen">Imagen de Fondo:</label>
         <input type="file" id="imagen" accept="image/*" required />
