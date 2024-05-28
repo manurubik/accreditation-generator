@@ -88,18 +88,6 @@ function actualizarVistaPrevia() {
           img.style.maxWidth = "100px";
           img.style.maxHeight = "100px";
           vistaPrevia.appendChild(img);
-
-          interact(img).draggable({
-            inertia: true,
-            modifiers: [
-              interact.modifiers.restrictRect({
-                restriction: "parent",
-                endOnly: true,
-              }),
-            ],
-            autoScroll: true,
-            listeners: { move: dragMoveListener },
-          });
           // Agregar evento de doble clic para eliminar el elemento
           img.addEventListener("dblclick", function () {
             img.remove();
@@ -111,31 +99,59 @@ function actualizarVistaPrevia() {
 }
 
 // Hacer los elementos draggable con Interact.js
-interact(".draggable")
-  .draggable({
-    listeners: { move: dragMoveListener },
-    inertia: false,
-    modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: "parent",
-        endOnly: true,
-      }),
-    ],
-  })
-  .resizable({
-    edges: { left: true, right: true, bottom: true, top: true },
+let dragElement = interact(".draggable");
 
-    listeners: { move: resizeListener },
-    inertia: false,
-    modifiers: [
-      interact.modifiers.restrictEdges({
-        outer: "parent",
-      }),
-      interact.modifiers.restrictSize({
-        min: { width: 50, height: 50 },
-      }),
-    ],
-  });
+class DraggingElement {
+  constructor(el) {
+    this.el = el;
+    this.x = 0;
+    this.y = 0;
+    this.interactElement = interact(this.el);
+    this.interactElement.draggable({
+      listeners: {
+        move: dragMoveListener,
+      },
+      inertia: false,
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: "parent",
+          endOnly: true,
+        }),
+      ],
+    });
+    this.interactElement.resizable({
+      edges: { left: true, right: true, bottom: true, top: true },
+
+      listeners: { move: resizeListener },
+      inertia: false,
+      modifiers: [
+        interact.modifiers.restrictEdges({
+          outer: "parent",
+        }),
+        interact.modifiers.restrictSize({
+          min: { width: 50, height: 50 },
+        }),
+      ],
+    });
+  }
+}
+
+let de1 = new DraggingElement(".draggable");
+let de2 = new DraggingElement(".patrocinador");
+
+function dragMoveListener(event) {
+  const target = event.target;
+  // keep the dragged position in the data-x/data-y attributes
+  const x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+  const y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+
+  // translate the element
+  target.style.transform = `translate(${x}px, ${y}px)`;
+
+  // update the posiion attributes
+  target.setAttribute("data-x", x);
+  target.setAttribute("data-y", y);
+}
 
 function resizeListener(event) {
   var target = event.target;
@@ -155,27 +171,15 @@ function resizeListener(event) {
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
 }
-function dragMoveListener(event) {
-  const target = event.target;
-  // keep the dragged position in the data-x/data-y attributes
-  const x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-  const y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-
-  // translate the element
-  target.style.transform = `translate(${x}px, ${y}px)`;
-
-  // update the posiion attributes
-  target.setAttribute("data-x", x);
-  target.setAttribute("data-y", y);
-}
-
-window.onload = function () {
-  actualizarVistaPrevia();
-};
 
 const inputs = document.querySelectorAll("input");
 inputs.forEach((input) => {
-  input.addEventListener("change", actualizarVistaPrevia);
+  input.addEventListener("input", actualizarVistaPrevia);
+  input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  });
 });
 
 // Función para aumentar el tamaño de un elemento
