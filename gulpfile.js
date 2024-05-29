@@ -9,6 +9,12 @@ import gulpSass from "gulp-sass";
 import * as sassCompiler from "sass";
 import browserSync from "browser-sync";
 
+import browserify from "browserify";
+import babelify from "babelify";
+import source from "vinyl-source-stream";
+import buffer from "vinyl-buffer";
+import * as glob from "glob";
+
 const sass = gulpSass(sassCompiler);
 const browsersync = browserSync.create();
 
@@ -19,9 +25,9 @@ const paths = {
     output: "styles.css", // Nombre del archivo CSS combinado
   },
   scripts: {
-    src: "app/js/**/*.js",
+    src: glob.sync("app/js/*.js"),
     dest: "dist/js/",
-    output: "main.js", // Nombre del archivo JS combinado
+    output: "script.js", // Nombre del archivo JS combinado
   },
   html: {
     src: "*.html",
@@ -40,19 +46,17 @@ function styles() {
 
 // Transpilar, minificar y combinar JavaScript
 function scripts() {
-  return src(paths.scripts.src)
-    .pipe(
-      babel({
-        presets: [
-          [
-            "@babel/preset-env",
-            {
-              modules: false,
-            },
-          ],
-        ],
-      })
-    )
+  return browserify({
+    entries: glob.sync("app/js/*.js"), // Aquí se usará directamente glob.sync() para obtener todas las rutas de los archivos JS
+    debug: true,
+  })
+    .transform(babelify, {
+      presets: ["@babel/preset-env"],
+      sourceMaps: true,
+    })
+    .bundle()
+    .pipe(source(paths.scripts.output))
+    .pipe(buffer())
     .pipe(terser())
     .pipe(dest(paths.scripts.dest))
     .pipe(browsersync.stream());

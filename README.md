@@ -43,10 +43,7 @@ generador-acreditaciones/
 |   ├── css/
 │   │   └── styles.css
 │   ├── js/
-│   │   └── formulario.js
-│   │   └── main.js
-│   │   └── utils.js
-│   │   └── vistaPrevia.js
+│   │   └── scripts.js
 ├── .gitignore
 ├── LICENSE
 ├── README.md
