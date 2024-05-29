@@ -3,19 +3,16 @@ const sass = require("gulp-sass")(require("sass"));
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
-const babel = require("gulp-babel");
-const terser = require("gulp-terser");
 const browsersync = require("browser-sync").create();
 
 // Rutas de archivos
 const paths = {
   styles: {
     src: "app/scss/**/*.scss",
-    dest: "dist/css/",
+    dest: "app/css/",
   },
   scripts: {
-    src: "app/js/**/*.js",
-    dest: "dist/js/",
+    src: "app/js/**/*.*js",
   },
   html: {
     src: "*.html",
@@ -33,15 +30,7 @@ function styles() {
 
 // Transpilar y minificar JavaScript
 function scripts() {
-  return src(paths.scripts.src)
-    .pipe(
-      babel({
-        presets: ["@babel/preset-env"],
-      })
-    )
-    .pipe(terser())
-    .pipe(dest(paths.scripts.dest))
-    .pipe(browsersync.stream());
+  return src(paths.scripts.src).pipe(browsersync.stream());
 }
 
 // Iniciar servidor y vigilar cambios

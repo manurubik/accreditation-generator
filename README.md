@@ -19,16 +19,15 @@ Este proyecto es una aplicación web que permite generar acreditaciones personal
 - CSS
 - SCSS
 - JavaScript
-- [Gulp](https://gulpjs.com/) para la transformación de SCSS y JS, y servidor de desarrollo.
-- [PapaParse](https://www.papaparse.com/) para la manipulación de archivos CSV.
-- [html2canvas](https://html2canvas.hertzen.com/) para la generación de capturas de pantalla.
-- [interact.js](https://interactjs.io/) para la interactividad de los elementos.
+- [Gulp](https://gulpjs.com/) para la transformación de SCSS y servidor de desarrollo.
 
 ## 🗂️ Estructura del Proyecto
 
 ```txt
 generador-acreditaciones/
 ├── app/
+|   ├── css/
+│   │   └── styles.css
 │   ├── js/
 │   │   └── main.js
 │   ├── scss/
@@ -37,12 +36,6 @@ generador-acreditaciones/
 │   │   ├── _reset.scss
 │   │   ├── _vistaPrevia.scss
 │   │   └── styles.scss
-├── dist/
-│   ├── css/
-│   │   └── styles.css
-│   │   └── styles.css.map
-│   ├── js/
-│   │   └── main.js
 ├── node_modules
 ├── .gitignore
 ├── gulpfile.js

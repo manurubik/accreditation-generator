@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generador de Acreditaciones</title>
-    <link rel="stylesheet" href="dist/css/styles.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="http://localhost:3000/app/css/styles.css"
+      type="text/css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js"></script>
   </head>
   <body>
@@ -82,21 +86,21 @@
         </div>
         <div id="controls">
           <div id="controlTitulo" class="control" style="display: none">
-            <label for="titulo-size">Titulo:</label>
+            <p for="titulo-size">Titulo:</p>
             <div id="titulo-size" class="botones">
               <button class="controller" id="titulo-increase">+</button>
               <button class="controller" id="titulo-decrease">-</button>
             </div>
           </div>
           <div class="control">
-            <label for="nombre-size">Nombre:</label>
+            <p for="nombre-size">Nombre:</p>
             <div id="nombre-size" class="botones">
               <button class="controller" id="nombre-increase">+</button>
               <button class="controller" id="nombre-decrease">-</button>
             </div>
           </div>
           <div class="control">
-            <label for="rol-size">Rol:</label>
+            <p for="rol-size">Rol:</p>
             <div id="rol-size" class="botones">
               <button class="controller" id="rol-increase">+</button>
               <button class="controller" id="rol-decrease">-</button>
@@ -114,6 +118,6 @@
       </div>
     </form>
 
-    <script src="dist/js/main.js"></script>
+    <script type="module" src="http://localhost:3000/app/js/main.js"></script>
   </body>
 </html>
