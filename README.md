@@ -15,11 +15,11 @@ Este proyecto es una aplicación web que permite generar acreditaciones personal
 
 ## 🛠️ Tecnologías Utilizadas
 
-- HTML
-- CSS
-- SCSS
-- JavaScript
-- [Gulp](https://gulpjs.com/) para la transformación de SCSS y servidor de desarrollo.
+- ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+- ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+- ![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+- ![Gulp](https://img.shields.io/badge/Gulp-CF4647?style=for-the-badge&logo=gulp&logoColor=white)
 - TODO: GENERADOR DE ACREDITACIONES
 
 ## 🗂️ Estructura del Proyecto
@@ -55,18 +55,18 @@ generador-acreditaciones/
 
 ## 💻 Uso
 
-1. Visita mi web de [GitHub Pages](https://manurubik.github.io/accreditation-generator)
+1. Visita la web del programa en [GitHub Pages](https://manurubik.github.io/accreditation-generator)
 2. Rellena los campos del formulario:
    - Introduce el alto y el ancho de la acreditación (en cm).
    - Sube una imagen de fondo.
    - Sube un archivo CSV con los datos (se obtiene como organizador en la web de la WCA).
    - Opcionalmente, sube una fuente personalizada y/o imágenes de patrocinadores.
 3. Usa la vista previa para ajustar el diseño de las acreditaciones.
-4. Haz clic en "Generar Acreditaciones" para crear las acreditaciones (TODO).
+4. (TODO) Haz clic en "Generar Acreditaciones" para crear las acreditaciones.
 
 ## 📱 Estilos Responsivos
 
-El diseño es responsivo y se ajusta a dispositivos móviles. A pesar de ello, puede que la librería _interact.js_ no funcione correctamente.
+El diseño es responsivo y se ajusta a dispositivos móviles. A pesar de ello, puede que la librería _"interact.js"_ no funcione correctamente.
 
 ## 🤝 Contribución
 
