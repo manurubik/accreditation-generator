@@ -20,30 +20,40 @@ Este proyecto es una aplicación web que permite generar acreditaciones personal
 - SCSS
 - JavaScript
 - [Gulp](https://gulpjs.com/) para la transformación de SCSS y servidor de desarrollo.
+- TODO: GENERADOR DE ACREDITACIONES
 
 ## 🗂️ Estructura del Proyecto
 
 ```txt
 generador-acreditaciones/
 ├── app/
+│   ├── js/
+│   │   └── formulario.js
+│   │   └── main.js
+│   │   └── utils.js
+│   │   └── vistaPrevia.js
+|   ├── scss/
+│   │   └── _formulario.css
+│   │   └── _generales.css
+│   │   └── _mobile.css
+│   │   └── _reset.css
+│   │   └── _vistaPrevia.css
+│   │   └── styles.css
+├── dist/
 |   ├── css/
 │   │   └── styles.css
 │   ├── js/
+│   │   └── formulario.js
 │   │   └── main.js
-│   ├── scss/
-│   │   ├── _formulario.scss
-│   │   ├── _mobile.scss
-│   │   ├── _reset.scss
-│   │   ├── _vistaPrevia.scss
-│   │   └── styles.scss
-├── node_modules
+│   │   └── utils.js
+│   │   └── vistaPrevia.js
 ├── .gitignore
+├── LICENSE
+├── README.md
 ├── gulpfile.js
 ├── index.html
-├── LICENSE
 ├── package-lock.json
-├── package.json
-└── README.md
+└── package.json
 ```
 
 ## 💻 Uso
@@ -55,7 +65,7 @@ generador-acreditaciones/
    - Sube un archivo CSV con los datos (se obtiene como organizador en la web de la WCA).
    - Opcionalmente, sube una fuente personalizada y/o imágenes de patrocinadores.
 3. Usa la vista previa para ajustar el diseño de las acreditaciones.
-4. Haz clic en "Generar Acreditaciones" para crear las acreditaciones.
+4. Haz clic en "Generar Acreditaciones" para crear las acreditaciones (TODO).
 
 ## 📱 Estilos Responsivos
 
