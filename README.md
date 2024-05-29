@@ -55,7 +55,7 @@ generador-acreditaciones/
 
 ## 💻 Uso
 
-1. Visita la web del programa en [GitHub Pages](https://manurubik.github.io/accreditation-generator)
+1. Visita la web del proyecto en [GitHub Pages](https://manurubik.github.io/accreditation-generator)
 2. Rellena los campos del formulario:
    - Introduce el alto y el ancho de la acreditación (en cm).
    - Sube una imagen de fondo.
