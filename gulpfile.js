@@ -1,36 +1,61 @@
-const { src, dest, watch, series } = require("gulp");
-const sass = require("gulp-sass")(require("sass"));
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const cssnano = require("cssnano");
-const browsersync = require("browser-sync").create();
+import { src, dest, watch, series } from "gulp";
+import postcss from "gulp-postcss";
+import autoprefixer from "autoprefixer";
+import cssnano from "cssnano";
+import babel from "gulp-babel";
+import terser from "gulp-terser";
+import concat from "gulp-concat";
+import gulpSass from "gulp-sass";
+import * as sassCompiler from "sass";
+import browserSync from "browser-sync";
 
-// Rutas de archivos
+const sass = gulpSass(sassCompiler);
+const browsersync = browserSync.create();
+
 const paths = {
   styles: {
     src: "app/scss/**/*.scss",
-    dest: "app/css/",
+    dest: "dist/css/",
+    output: "styles.css", // Nombre del archivo CSS combinado
   },
   scripts: {
-    src: "app/js/**/*.*js",
+    src: "app/js/**/*.js",
+    dest: "dist/js/",
+    output: "main.js", // Nombre del archivo JS combinado
   },
   html: {
     src: "*.html",
   },
 };
 
-// Compilar SCSS
+// Compilar y combinar SCSS
 function styles() {
   return src(paths.styles.src)
     .pipe(sass().on("error", sass.logError))
     .pipe(postcss([autoprefixer(), cssnano()]))
+    .pipe(concat(paths.styles.output)) // Unir todos los archivos CSS en uno solo
     .pipe(dest(paths.styles.dest))
     .pipe(browsersync.stream());
 }
 
-// Transpilar y minificar JavaScript
+// Transpilar, minificar y combinar JavaScript
 function scripts() {
-  return src(paths.scripts.src).pipe(browsersync.stream());
+  return src(paths.scripts.src)
+    .pipe(
+      babel({
+        presets: [
+          [
+            "@babel/preset-env",
+            {
+              modules: false,
+            },
+          ],
+        ],
+      })
+    )
+    .pipe(terser())
+    .pipe(dest(paths.scripts.dest))
+    .pipe(browsersync.stream());
 }
 
 // Iniciar servidor y vigilar cambios
@@ -47,7 +72,4 @@ function serve() {
 }
 
 // Tareas
-exports.styles = styles;
-exports.scripts = scripts;
-exports.serve = serve;
-exports.default = series(styles, scripts, serve);
+export default series(styles, scripts, serve);

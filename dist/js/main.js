@@ -1,0 +1,1 @@
+import{eventosFormulario}from"./formulario.js";import{eventosDraggables}from"./vistaPrevia.js";document.addEventListener("DOMContentLoaded",(function(){eventosFormulario(),eventosDraggables()}));

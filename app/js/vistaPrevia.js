@@ -1,4 +1,4 @@
-import { eliminarFuente } from "./utils.mjs";
+import { eliminarFuente } from "./utils.js";
 // Función para actualizar la vista previa
 export function actualizarVistaPrevia() {
   const alto = document.getElementById("alto").value;

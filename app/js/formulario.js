@@ -3,8 +3,8 @@ import {
   eliminarPatrocinadores,
   aumentarTamaño,
   disminuirTamaño,
-} from "./utils.mjs";
-import { actualizarVistaPrevia } from "./vistaPrevia.mjs";
+} from "./utils.js";
+import { actualizarVistaPrevia } from "./vistaPrevia.js";
 
 export function eventosFormulario() {
   // Mostrar el botón de eliminar al seleccionar un archivo

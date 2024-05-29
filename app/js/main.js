@@ -1,5 +1,7 @@
-import { eventosFormulario } from "./formulario.mjs";
-import { eventosDraggables } from "./vistaPrevia.mjs";
+import { eventosFormulario } from "./formulario.js";
+import { eventosDraggables } from "./vistaPrevia.js";
 
-eventosFormulario();
-eventosDraggables();
+document.addEventListener("DOMContentLoaded", () => {
+  eventosFormulario();
+  eventosDraggables();
+});
